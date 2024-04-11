@@ -1,6 +1,6 @@
 'use client'
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 interface Player {
   name: string;
@@ -60,7 +60,7 @@ const PingPongGame: React.FC = () => {
     }
   };
 
-  const handleEndGame = () => {
+  const handleEndGame = useCallback(() => {
     if (!gameStarted) return;
 
     const gameResult = {
@@ -72,7 +72,7 @@ const PingPongGame: React.FC = () => {
     .then(response => response.data)
     .catch(error => console.log('Error posting game result', error))
     resetGame();
-  };
+  }, [ , winner ])
 
   useEffect(() => {
     const fetchGames = async () => {
