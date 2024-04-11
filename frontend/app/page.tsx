@@ -77,7 +77,7 @@ const PingPongGame: React.FC = () => {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const response = await axios.get(`${url}/games?page=${currentPage}`);
+        const response = await axios.get(`${url}/games`);
         const { games: fetchedGames, totalPages: fetchedTotalPages } = response.data;
         setGames(fetchedGames);
         setTotalPages(fetchedTotalPages);
@@ -86,7 +86,7 @@ const PingPongGame: React.FC = () => {
       }
     };
     fetchGames();
-  }, [handleEndGame]);
+  }, [handleEndGame, url]);
 
   return (
     <div className="p-4">
