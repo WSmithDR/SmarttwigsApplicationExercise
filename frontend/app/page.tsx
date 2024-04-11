@@ -78,9 +78,8 @@ const PingPongGame: React.FC = () => {
     const fetchGames = async () => {
       try {
         const response = await axios.get(`${url}/games`);
-        const { games: fetchedGames, totalPages: fetchedTotalPages } = response.data;
+        const { games: fetchedGames } = response.data;
         setGames(fetchedGames);
-        setTotalPages(fetchedTotalPages);
       } catch (error) {
         console.error('Error fetching games:', error);
       }
